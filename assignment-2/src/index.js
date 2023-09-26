@@ -13,15 +13,6 @@ const bookList = [
   {"name": "The Pragmatic Programmer", "author": "David Thomas", "topic": "Software Engineering"},
   {"name": "Head First Design Patterns", "author": "Eric Freeman", "topic": "Software Engineering"},
   {"name": "Smart Code", "author": "Robert Cecil Martin", "topic": "Software Engineering"},
-
-  {"name": "gweg", "author": "Martin Fowler", "topic": "Software Engineering"},
-  {"name": "Clvweean wegCode", "author": "Robert Cecil Martin", "topic": "Software Engineering"},
-  {"name": "Adapwebweegtive Code", "author": "Gary McLean Hall", "topic": "Software Engineering"},
-  {"name": "DON'wegwT MAKE ME THINK", "author": "Steve Krug", "topic": "Software Engineering"},
-  {"name": "Soft Skilgewegls", "author": "John Sonmez", "topic": "Software Engineering"},
-  {"name": "The Prwegweagmatic Programmer", "author": "David Thomas", "topic": "Software Engineering"},
-  {"name": "Head Firbrebvrwebst Design Patterns", "author": "Eric Freeman", "topic": "Software Engineering"},
-  {"name": "Smart erberberCode", "author": "Robert Cecil Martin", "topic": "Software Engineering"},
 ];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

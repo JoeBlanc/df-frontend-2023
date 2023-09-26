@@ -2,13 +2,11 @@ header {
     overflow-x: auto; 
     padding: 2rem 1.5rem 1.5rem;
     width: 100%; 
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1); 
     text-align: center;
     margin-bottom: 30px;
+    background-color: #f7f7f7; 
 
-    @media (min-width: 640px) { 
-    border-radius: 1rem; 
-    }
 }
 
 h1 {
@@ -16,6 +14,6 @@ h1 {
     font-size: 1.5rem;
     line-height: 2rem; 
     font-weight: 700; 
-    /* color */
-    color: #1a202c;
+    /* color 
+    color: #374151; */
 }
