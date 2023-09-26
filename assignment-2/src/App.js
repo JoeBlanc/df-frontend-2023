@@ -1,28 +1,52 @@
 import './App.css';
 import { Header, AddBook, Table, Theme } from './components';
 import { useState, useEffect } from 'react';
-import { createContext } from 'react';
-
-export const ThemeContext = createContext(null);
-
 
 function App({data}) {
   const [bookList, setBookList] = useState(()=>{
     const localData = localStorage.getItem('bookList');
     return localData ? JSON.parse(localData) : data;
   });
-
   useEffect(() => {
     localStorage.setItem('bookList', JSON.stringify(bookList));
   }, [bookList]);
 
-  const [theme, setTheme] = useState('dark');
+  const [currentTheme, setCurrentTheme] = useState(() => {
+    const localTheme = localStorage.getItem('theme');
+    return localTheme ? localTheme : null;
+  });
+  useEffect(() => {
+    themeCheck()
+  }, [currentTheme]);
 
-  function toggleTheme() {
-    setTheme(currentTheme => {
-      return currentTheme === 'light' ? 'dark' : 'light';
-    });
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+  // const userTheme = localStorage.getItem('theme');
+  function themeCheck() {
+    console.log('themeCheck');
+    if (currentTheme === 'dark' || (!currentTheme && systemTheme ==='dark')) {
+      document.documentElement.classList.add('dark');
+      setCurrentTheme('dark');
+    } else {
+      document.documentElement.classList.add('light');
+      setCurrentTheme('light');
+    }
+    localStorage.setItem('theme', JSON.stringify(currentTheme));
   }
+
+  function switchTheme() {
+    if(document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+      return
+    } else {
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      return
+    }
+  } 
 
   function handleAddBook(name, author, topic) {
     setBookList(currentBookList => {
@@ -40,18 +64,18 @@ function App({data}) {
   }
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
-      <div className='App' id={theme} >
-        <Header />
+    <div className={`App bg-gray-100 dark:bg-gray-800/70`}  >
+      <Header />
 
-        {/* <Theme /> */}
+      <AddBook addBook={handleAddBook} />
 
-        <AddBook addBook={handleAddBook} />
+      <Table data={bookList} handleDeleteBook={handleDeleteBook}/>
 
-        <Table data={bookList} handleDeleteBook={handleDeleteBook}/>
+      <div className='w-full h-[50px]'/>      
 
-      </div>
-    </ThemeContext.Provider>
+      <Theme handleSwitchTheme={switchTheme} currentTheme={currentTheme}/>
+
+    </div>
   );
 }
 

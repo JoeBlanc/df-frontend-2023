@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './AddBook.module.css'
+// import styles from './AddBook.module.css'
 import { useState } from 'react'
 
 const AddBook = ({addBook}) => {
@@ -30,7 +30,7 @@ const AddBook = ({addBook}) => {
     
   return (
     <>
-      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-[10px]' onClick={() => {setIsOpen(true)}}>Add Book</button>
+      <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md' onClick={() => {setIsOpen(true)}}>Add Book</button>
       {isOpen ? ( <>
         {/* overlay */}
         <div id='overlay' className="fixed z-[9] inset-0 bg-gray-900/50 " />
@@ -39,7 +39,7 @@ const AddBook = ({addBook}) => {
           <div className="bg-white shadow-md rounded-lg w-[400px] px-8 pt-6 pb-8 mb-4">
             <header className="flex justify-between items-center ">
               <h2 className="text-gray-700 font-bold text-xl">Book Information</h2>
-              <button onClick={() => handleCloseModal()} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">X</button>
+              <button onClick={() => handleCloseModal()} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">X</button>
             </header>
             <form onSubmit={handleAddBook} class="w-full px-8 py-4 ">
               <div className="mb-4">
@@ -61,10 +61,10 @@ const AddBook = ({addBook}) => {
                 <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type='text' value={topic} onChange={e => setTopic(e.target.value)}  />
               </div>
               <div className=" flex items-center justify-end gap-3">
-                <button onClick={handleAddBook} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button onClick={handleAddBook} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                   Add book
                 </button>
-                <button onClick={() => handleCloseModal()} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                <button onClick={() => handleCloseModal()} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
                   Cancel
                 </button>
               </div>
