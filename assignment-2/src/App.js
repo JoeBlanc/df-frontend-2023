@@ -20,6 +20,7 @@ function App({data}) {
   });
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme));
+    console.log(currentTheme);
   }, [currentTheme]);
 
   // initial theme check
@@ -34,7 +35,7 @@ function App({data}) {
     }
   }
   // switch theme
-  function switchTheme() {
+  function handleswitchTheme() {
     if(document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
@@ -75,7 +76,7 @@ function App({data}) {
 
       <div className='w-full h-[50px]'/>      
 
-      <Theme handleSwitchTheme={switchTheme} currentTheme={currentTheme}/>
+      <Theme handleSwitchTheme={handleswitchTheme} currentTheme={currentTheme}/>
 
     </div>
   );

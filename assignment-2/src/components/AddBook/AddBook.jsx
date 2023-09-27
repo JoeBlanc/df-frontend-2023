@@ -10,7 +10,7 @@ const AddBook = ({addBook}) => {
 
   function handleCloseModal() {
     setIsOpen(false);
-    // empty modal inputs
+    // empty modal's inputs
     setName("");
     setAuthor("");
     setTopic("");
