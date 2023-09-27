@@ -1,28 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
-
-const Pagination = ({data, handleDeleteBook}) => {
-
-  //Pagination  
-  const [currentPage, setCurrentPage] = useState(1); const booksPerPage = 4;
-  const lastBookIndex = currentPage * booksPerPage;
-  const firstBookIndex = lastBookIndex - booksPerPage;
-  const pages = [];
-  for (let i = 1; i <= Math.ceil(data.length / booksPerPage); i++) {
-    pages.push(i);
-  }
-  const currentBooks = data.slice(firstBookIndex, lastBookIndex);
-  function returnCurrentBook() {
-    return true
-  }
+const Pagination = ({toggleNextPage, togglePreviousPage, pages, setCurrentPage}) => {
 
   return (
-    <nav>
-        <button onClick={() => setCurrentPage((currentPage) => currentPage - 1)}>-</button>
-        {pages.map((page, index) => (
-            <button key={index} onClick={() => setCurrentPage(page)}>{page}</button>
-        ))}
-        <button onClick={() => setCurrentPage((currentPage) => currentPage + 1)}>+</button>
+    <nav className=' flex border-2 border-gray-300 rounded-[20px] overflow-hidden'>
+      <button className=' hover:bg-gray-500/50 text-gray-700 w-[80px] pl-2 py-2 font-bold text-center focus:outline-none focus:shadow-outline'
+              onClick={togglePreviousPage}>Previous</button>
+      {pages.map((page, index) => (
+          <button className=' rounded-xl overflow-hidden hover:bg-gray-500/50 text-gray-700 font-bold text-center px-2 focus:outline-none focus:shadow-outline' key={index} onClick={() => setCurrentPage(page)}>{page}</button>
+      ))}
+      <button className=' hover:bg-gray-500/50 text-gray-700 w-[80px] pr-2 py-2 font-bold text-center focus:outline-none focus:shadow-outline' 
+              onClick={toggleNextPage}>Next</button>
     </nav>
   )
 }

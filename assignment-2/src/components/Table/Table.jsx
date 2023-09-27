@@ -1,34 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState} from 'react'
 import BookRow from '../BookRow/BookRow';
+import Pagination from '../Pagination/Pagination';
 
 const Table = ({data, handleDeleteBook}) => {
   const [searchValue, setsearchValue] = useState("");
-
-  //Pagination here, still not figure out how to split the Pagination into a component
   const [currentPage, setCurrentPage] = useState(1); const booksPerPage = 5;
-  const lastBookIndex = currentPage * booksPerPage;
-  const firstBookIndex = lastBookIndex - booksPerPage;
-  // currentBooks here is slice from the original data and then filtered by searchValue so that search and pagination does not work along
-  // if want to make search and pagination work along, need to slice the data after being filtered by searchValue
+  const [currentBooks, setCurrentBooks] = useState(data.slice(0, booksPerPage));
+  // const [pageNumbers, setPageNumbers] = useState([]); // [1, 2, 3, 4, 5
+  const lastBookIndex = currentPage * booksPerPage; const firstBookIndex = lastBookIndex - booksPerPage;
+
+  // PAGINATION
   // solution: filtered the data first, then store it in a new variable, then slice the new variable
-  const currentBooks = data.slice(firstBookIndex, lastBookIndex);
+  useEffect(() => {
+    const filteredBooks = data.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase()));
+    setCurrentBooks(filteredBooks.slice(firstBookIndex, lastBookIndex));
+  }, [searchValue, currentPage, data, firstBookIndex, lastBookIndex])
+
+  // better solution: create a new array of page numbers, then map it
   const pages = [];
   for (let i = 1; i <= Math.ceil(data.length / booksPerPage); i++) {
     pages.push(i);
   }
 
+  function toggleNextPage() {
+    if (currentPage === pages.length) {
+      alert('This is the last page')
+      return
+    } else {
+      setCurrentPage((currentPage) => {return currentPage + 1});
+    }
+  }
+
+  function togglePreviousPage() {
+    if (currentPage === 1) {
+      alert('This is the first page')
+      return
+    } else {
+      setCurrentPage((currentPage) => {return currentPage - 1});
+    }
+  }
+
   return (
     <section className='relative my-[20px]'>
       <div className='my-[20px] flex justify-between px-6'>
+        {/* Searchbox */}
         <input className=' border-2 border-gray-400 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none ' type="text" placeholder="Search by book name" value={searchValue} onChange={(e) => {setsearchValue(e.target.value)}} />
-        <nav className=' flex border-2 border-gray-300 rounded-[20px] overflow-hidden'>
-            <button className=' hover:bg-gray-500/50 text-gray-700 w-[80px] pl-2 py-2 font-bold text-center focus:outline-none focus:shadow-outline' onClick={() => setCurrentPage((currentPage) => currentPage - 1)}>Previous</button>
-            {pages.map((page, index) => (
-                <button className=' rounded-xl overflow-hidden hover:bg-gray-500/50 text-gray-700 font-bold text-center px-2 focus:outline-none focus:shadow-outline' key={index} onClick={() => setCurrentPage(page)}>{page}</button>
-            ))}
-            <button className=' hover:bg-gray-500/50 text-gray-700 w-[80px] pr-2 py-2 font-bold text-center focus:outline-none focus:shadow-outline' onClick={() => setCurrentPage((currentPage) => currentPage + 1)}>Next</button>
-        </nav>
+        {/* Pagination */}
+        <Pagination toggleNextPage={toggleNextPage} togglePreviousPage={togglePreviousPage} setCurrentPage={setCurrentPage} pages={pages}/>
       </div>
       
       {/* Table */}
