@@ -70,9 +70,6 @@ const Table = ({data, handleDeleteBook}) => {
         </thead>
         <tbody>
           {/* {data.length === 0 && <tr><td colSpan="4">No data</td></tr>} */}
-          {/* {currentBooks.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((book, index) => (
-            <BookRow book={book} handleDeleteBook={handleDeleteBook} key={index} /> ))
-          } */}
           {currentBooks.map((book: Book, index: number) => (
             <BookRow book={book} handleDeleteBook={handleDeleteBook} key={index} /> ))
           }
