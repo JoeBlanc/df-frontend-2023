@@ -3,13 +3,7 @@ import './Theme.css'
 
 const Theme = ({handleSwitchTheme, currentTheme}) => {
   // console.log(currentTheme)
-  const [isMoon, setIsMoon] = useState(() => {
-    if (currentTheme === 'dark') {
-      return true
-    } else {
-      return false
-    }
-  });
+  const [isMoon, setIsMoon] = useState(currentTheme === 'dark');
   console.log(isMoon)
 
   function onThemeIconChange(e) {

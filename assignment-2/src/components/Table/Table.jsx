@@ -35,7 +35,6 @@ const Table = ({data, handleDeleteBook}) => {
   function togglePreviousPage() {
     if (currentPage === 1) {
       alert('This is the first page')
-      return
     } else {
       setCurrentPage((currentPage) => {return currentPage - 1});
     }
@@ -70,7 +69,7 @@ const Table = ({data, handleDeleteBook}) => {
         </thead>
         <tbody>
           {/* {data.length === 0 && <tr><td colSpan="4">No data</td></tr>} */}
-          {currentBooks.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((book, index) => (
+          {currentBooks.map((book, index) => (
             <BookRow book={book} handleDeleteBook={handleDeleteBook} key={index} /> ))
           }
         </tbody>
