@@ -20,7 +20,7 @@ function App({data}) {
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme));
   }, [currentTheme]);
-
+  
   // initial theme check
   useEffect(() => {themeCheck()})
   function themeCheck() {
@@ -47,16 +47,21 @@ function App({data}) {
     }
   } 
   // add book
-  const handleAddBook = (name, author, topic) => {
-    setBookList(currentBookList => {
+  interface Book {
+    name: string;
+    author: string;
+    topic: string;
+  }
+  const handleAddBook = (name : string, author: string, topic:string) => {
+    setBookList((currentBookList: Array<Book>) => {
       return [{name, author, topic} ,...currentBookList ]
     });
   }
   // delete book
-  const handleDeleteBook = (name) => {
+  const handleDeleteBook = (name : string) => {
     const confirm = window.confirm('Are you sure you want to delete this book?');
     if (confirm) {
-      setBookList(currentBookList => {
+      setBookList((currentBookList: Array<Book>) => {
         return currentBookList.filter(book => book.name !== name)
       });
     }

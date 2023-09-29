@@ -3,20 +3,23 @@ import BookRow from '../BookRow/BookRow';
 import Pagination from '../Pagination/Pagination';
 
 const Table = ({data, handleDeleteBook}) => {
+  interface Book {
+    name: string;
+    author: string;
+    topic: string;
+  }
+
   const [searchValue, setsearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1); const booksPerPage = 5;
   const [currentBooks, setCurrentBooks] = useState(data.slice(0, booksPerPage));
-  // const [pageNumbers, setPageNumbers] = useState([]); // [1, 2, 3, 4, 5
   const lastBookIndex = currentPage * booksPerPage; const firstBookIndex = lastBookIndex - booksPerPage;
 
   // PAGINATION
-  // solution: filtered the data first, then store it in a new variable, then slice the new variable
   useEffect(() => {
-    const filteredBooks = data.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase()));
+    const filteredBooks = data.filter((book : Book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase()));
     setCurrentBooks(filteredBooks.slice(firstBookIndex, lastBookIndex));
   }, [searchValue, currentPage, data, firstBookIndex, lastBookIndex])
 
-  // better solution: create a new array of page numbers, then map it
   const pages: Array<number> = [];
   for (let i:number = 1; i <= Math.ceil(data.length / booksPerPage); i++) {
     pages.push(i);
@@ -67,9 +70,13 @@ const Table = ({data, handleDeleteBook}) => {
         </thead>
         <tbody>
           {/* {data.length === 0 && <tr><td colSpan="4">No data</td></tr>} */}
-          {currentBooks.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((book, index) => (
+          {/* {currentBooks.filter((book) => book.name.toLowerCase().includes(searchValue.toLocaleLowerCase())).map((book, index) => (
+            <BookRow book={book} handleDeleteBook={handleDeleteBook} key={index} /> ))
+          } */}
+          {currentBooks.map((book: Book, index: number) => (
             <BookRow book={book} handleDeleteBook={handleDeleteBook} key={index} /> ))
           }
+          
         </tbody>
       </table>
     </section>
