@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './Theme.css'
 
 const Theme = ({handleSwitchTheme, currentTheme}) => {
-  // console.log(currentTheme)
   const [isMoon, setIsMoon] = useState(currentTheme === 'dark');
 
   function onThemeIconChange(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

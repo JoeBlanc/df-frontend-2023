@@ -1,4 +1,4 @@
-import React,{ Fragment, useState } from 'react'
+import React,{ useState } from 'react'
 
 const AddBook = ({addBook}) => {
   const [name, setName] = useState('');
@@ -14,7 +14,7 @@ const AddBook = ({addBook}) => {
     setTopic("");
   }
 
-  function handleAddBook(e) {
+  function handleAddBook(e : React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     if (name === "" || author === "" || topic === "") {
       alert("Please fill out all fields");
