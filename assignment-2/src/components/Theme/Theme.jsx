@@ -2,8 +2,13 @@ import React, { useState } from 'react'
 import './Theme.css'
 
 const Theme = ({handleSwitchTheme, currentTheme}) => {
-  // console.log(currentTheme)
-  const [isMoon, setIsMoon] = useState(currentTheme === 'dark');
+  const [isMoon, setIsMoon] = useState(() => {
+    if (currentTheme === 'dark') {
+      return true
+    } else {
+      return false
+    }
+  });
   console.log(isMoon)
 
   function onThemeIconChange(e) {

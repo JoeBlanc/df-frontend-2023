@@ -16,6 +16,8 @@
 
 /* have to store color as var so taht can change between light and dark mode */
 /* #light {
+#light {
+>>>>>>> 77bbf6c8d0c7bed380beb20ff2d22b8c34f36c96
   --primary-color : #fff;
   --secondary-color : #000;
   --font-color : #000;

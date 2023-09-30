@@ -56,9 +56,9 @@ const AddBook = ({addBook}) => {
               </div>
               <div className="mb-6">
                 <label className="block text-left text-gray-700 text-md font-bold mb-2" for="book-topic">
-                Topic
+                  Topic
                   <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' type='text' value={topic} onChange={e => setTopic(e.target.value)}  />
-                  </label>
+                </label>
               </div>
               <div className=" flex items-center justify-end gap-3">
                 <button onClick={handleAddBook} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline" type="button">
