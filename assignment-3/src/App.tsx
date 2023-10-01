@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Header, AddBook, Table, Theme } from './components';
 
 function App({data}) {
+  console.log('add changes to check lint');
   // book list local storage
   const [bookList, setBookList] = useState(()=>{
     const localData = localStorage.getItem('bookList');
