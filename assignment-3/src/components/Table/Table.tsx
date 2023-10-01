@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import BookRow from '../BookRow/BookRow'
 import Pagination from '../Pagination/Pagination'
 
-                const Table = ({ data, handleDeleteBook }) => {
-                  interface Book {
-                    name: string
-                    author: string
-                    topic: string
-                  }
+            const Table = ({ data, handleDeleteBook }) => {
+              interface Book {
+                name: string
+                author: string
+                topic: string
+              }
 
   const [searchValue, setsearchValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
