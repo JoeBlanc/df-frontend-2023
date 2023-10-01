@@ -57,10 +57,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
+    "*.{html, css, tsx, jsx, ts, js}": "prettier --write",
+    "*.tsx": [
+      "pnpm run lint"
     ]
   }
 }

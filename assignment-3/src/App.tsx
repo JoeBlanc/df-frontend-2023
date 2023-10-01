@@ -8,9 +8,9 @@ function App({ data }) {
     const localData = localStorage.getItem('bookList')
     return localData ? JSON.parse(localData) : data
   })
-              useEffect(() => {
-                localStorage.setItem('bookList', JSON.stringify(bookList))
-              }, [bookList])
+  useEffect(() => {
+    localStorage.setItem('bookList', JSON.stringify(bookList))
+  }, [bookList])
 
   // theme local storage
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -52,10 +52,10 @@ function App({ data }) {
   }
   // add book
   interface Book {
-    name: string
-    author: string
-    topic: string
-  }
+            name: string
+            author: string
+            topic: string
+          }
   const handleAddBook = (name: string, author: string, topic: string) => {
     setBookList((currentBookList: Array<Book>) => {
       return [{ name, author, topic }, ...currentBookList]
