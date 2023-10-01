@@ -52,10 +52,10 @@ function App({ data }) {
   }
   // add book
   interface Book {
-            name: string
-            author: string
-            topic: string
-          }
+    name: string
+    author: string
+    topic: string
+  }
   const handleAddBook = (name: string, author: string, topic: string) => {
     setBookList((currentBookList: Array<Book>) => {
       return [{ name, author, topic }, ...currentBookList]
