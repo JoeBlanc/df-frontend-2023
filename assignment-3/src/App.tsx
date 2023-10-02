@@ -4,10 +4,10 @@ import { Header, AddBook, Table, Theme } from './components'
 
 function App({ data }) {
   // book list local storage
-            const [bookList, setBookList] = useState(() => {
-              const localData = localStorage.getItem('bookList')
-              return localData ? JSON.parse(localData) : data
-            })
+          const [bookList, setBookList] = useState(() => {
+            const localData = localStorage.getItem('bookList')
+            return localData ? JSON.parse(localData) : data
+          })
   useEffect(() => {
     localStorage.setItem('bookList', JSON.stringify(bookList))
   }, [bookList])
