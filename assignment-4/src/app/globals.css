@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
