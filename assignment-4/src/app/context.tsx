@@ -3,13 +3,27 @@
 import { useRouter } from 'next/navigation'
 import React, { useState, useEffect, useCallback } from 'react'
 
-export const BookContext = React.createContext({
-  bookList: Array,
-  handleAddBook: (name: string, author: string, topic: string) => {},
-  handleDeleteBook: (name: string) => {},
+interface Book {
+  name: string
+  author: string
+  topic: string
+}
+
+interface BookContextType {
+  bookList: Book[]
+  handleAddBook: (name: string, author: string, topic: string) => void
+  handleDeleteBook: (name: string) => void
+}
+
+export const BookContext = React.createContext<BookContextType>({
+  bookList: [],
+  handleAddBook: () => {},
+  handleDeleteBook: () => {},
 })
 
-export const BookProvider = ({ children }) => {
+export const BookProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const Router = useRouter()
   const data = [
     {
@@ -54,7 +68,7 @@ export const BookProvider = ({ children }) => {
     },
   ]
   // book list local storage
-  const [bookList, setBookList] = useState(() => {
+  const [bookList, setBookList] = useState<Book[]>(() => {
     const localData = localStorage.getItem('bookList')
     return localData ? JSON.parse(localData) : data
   })
