@@ -1,5 +1,5 @@
 import React from 'react'
-import './BookRow.css'
+import Link from 'next/link'
 
 const BookRow = ({ book, handleDeleteBook }) => {
   return (
@@ -8,6 +8,21 @@ const BookRow = ({ book, handleDeleteBook }) => {
       <td className="px-6 py-4">{book.author}</td>
       <td className="px-6 py-4">{book.topic}</td>
       <td className="px-6 py-4">
+        <Link
+          className="mr-6 font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          href={{
+            pathname: `/books/${book.name}`,
+            query: {
+              name: book.name,
+              author: book.author,
+              topic: book.topic,
+              // data: JSON.stringify(book),
+              // handleDeleteBook: handleDeleteBook.toString(),
+            },
+          }}
+        >
+          Details
+        </Link>
         <button
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           onClick={() => handleDeleteBook(book.name)}

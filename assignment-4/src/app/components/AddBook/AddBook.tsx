@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 
 const AddBook = ({ addBook }) => {
@@ -32,7 +34,7 @@ const AddBook = ({ addBook }) => {
   return (
     <>
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-[20px] rounded-md"
         onClick={() => {
           setIsOpen(true)
         }}

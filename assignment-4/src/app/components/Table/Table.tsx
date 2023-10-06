@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import BookRow from '../BookRow/BookRow'
 import Pagination from '../Pagination/Pagination'
@@ -50,11 +52,11 @@ const Table = ({ data, handleDeleteBook }) => {
   }
 
   return (
-    <section className="relative my-[20px]">
-      <div className="my-[20px] flex justify-between px-6">
+    <section className="w-full relative my-[20px]">
+      <div className="mb-[20px] flex w-full justify-between items-center px-6">
         {/* Searchbox */}
         <input
-          className=" border-2 border-gray-400 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none "
+          className=" border-2 border-gray-400 bg-white text-gray-700 h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none "
           type="text"
           placeholder="Search by book name"
           value={searchValue}
