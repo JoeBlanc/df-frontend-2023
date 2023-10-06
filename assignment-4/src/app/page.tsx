@@ -10,12 +10,9 @@ function App() {
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light'
-  const [currentTheme, setCurrentTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') || systemTheme
-    }
-    return systemTheme
-  })
+  const [currentTheme, setCurrentTheme] = useState(
+    localStorage.getItem('theme') || systemTheme,
+  )
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme))
   }, [currentTheme])
