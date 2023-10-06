@@ -69,8 +69,11 @@ export const BookProvider: React.FC<{ children: React.ReactNode }> = ({
   ]
   // book list local storage
   const [bookList, setBookList] = useState<Book[]>(() => {
-    const localData = localStorage.getItem('bookList')
-    return localData ? JSON.parse(localData) : data
+    if (typeof window !== 'undefined') {
+      const localData = localStorage.getItem('bookList')
+      return localData ? JSON.parse(localData) : data
+    }
+    return data
   })
   useEffect(() => {
     localStorage.setItem('bookList', JSON.stringify(bookList))
