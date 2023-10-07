@@ -28,10 +28,10 @@ export default function Page({
       <h2 className="text-gray-700 dark:text-gray-200 text-xl font-bold tracking-wider ">
         {searchParams.name}
       </h2>
-      <p className="text-gray-700 dark:text-gray-200 ">
+      <p className="text-gray-700 dark:text-gray-200 tracking-wide">
         Author: {searchParams.author}
       </p>
-      <p className="text-gray-700 dark:text-gray-200 ">
+      <p className="text-gray-700 dark:text-gray-200 tracking-wide">
         Topic: {searchParams.topic}
       </p>
       <button

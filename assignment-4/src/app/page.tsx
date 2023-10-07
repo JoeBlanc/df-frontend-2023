@@ -7,11 +7,13 @@ import { BookContext } from './context'
 function App() {
   const { bookList, handleAddBook, handleDeleteBook } = useContext(BookContext)
   // theme local storage
-  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light'
+  const systemTheme =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
   const [currentTheme, setCurrentTheme] = useState(
-    localStorage.getItem('theme') || systemTheme,
+    typeof localStorage !== 'undefined' ? localStorage.getItem('theme') || systemTheme : systemTheme
   )
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme))
