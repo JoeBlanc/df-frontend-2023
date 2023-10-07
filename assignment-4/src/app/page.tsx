@@ -13,7 +13,9 @@ function App() {
       ? 'dark'
       : 'light'
   const [currentTheme, setCurrentTheme] = useState(
-    typeof localStorage !== 'undefined' ? localStorage.getItem('theme') || systemTheme : systemTheme
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('theme') || systemTheme
+      : systemTheme,
   )
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(currentTheme))
